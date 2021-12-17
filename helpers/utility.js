@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 
 class Utility {
+  static KEY = "valuepitch";
+
   static successRes(message = '', data) {
     return { status: 'success', message, data }
   }
@@ -9,11 +11,8 @@ class Utility {
     return { status: errorStatus, message }
   }
 
-  static generateToken(userData, token = false) {
-    if (token) {
-      return jwt.sign(userData, process.env.KEY, { expiresIn: '7d' })
-    }
-    return jwt.sign(userData, process.env.KEY, { expiresIn: '12h' })
+  static generateToken(data) {
+    return jwt.sign(data, this.KEY, { expiresIn: '12h' })
   }
 
 }
