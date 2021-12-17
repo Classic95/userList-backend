@@ -1,7 +1,3 @@
-const path = require('path')
-const fs = require('fs')
-const https = require('https')
-const intl = require('intl')
 const jwt = require('jsonwebtoken')
 
 class Utility {

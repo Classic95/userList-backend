@@ -10,14 +10,22 @@ const UsersSchema = new Schema({
         type: String,
     },
     password: {
-        type: Boolean,
+        type: String,
+    },
+    country: {
+        type: String,
+    },
+    dob: {
+        type: String,
     },
     avataar: {
-        type: Buffer,
-        required: true 
+        type: String,
+    },
+    address: {
+        type: String,
     }
 });
 
-const Users = mongoose.model('user',UsersSchema);
+const Users = mongoose.model('user', UsersSchema);
 
 module.exports = Users;
