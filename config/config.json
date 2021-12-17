@@ -1,0 +1,43 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "stulz_OneSelect",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "logging": true,
+    "migrationStorage": "sequelize",
+    "seederStorage": "sequelize"
+  },
+  "staging": {
+    "username": "ons_staging_user",
+    "password": "jB3kT1a3XglPQWElTbDP47nSTt3dm2AT",
+    "database": "ons_staging",
+    "host": "one-select-production.cluster-cmnp1olphnhg.ap-south-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "logging": false,
+    "migrationStorage": "sequelize",
+    "seederStorage": "sequelize"
+  },
+  "test": {
+    "username": "blcapps_stulz",
+    "password": "fAHv8Gx@^8T2EB6!m8qA",
+    "database": "blcapps_ONS_devTest",
+    "host": "cpanel.blackcurrantapps.com",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "logging": false,
+    "username": "onsroot",
+    "password": "&a43iy7CIh7FI!r",
+    "database": "production",
+    "host": "one-select-production.cluster-cmnp1olphnhg.ap-south-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "migrationStorage": "sequelize",
+    "seederStorage": "sequelize"
+  }
+}
