@@ -13,7 +13,8 @@ const UsersSchema = new Schema({
         type: Boolean,
     },
     avataar: {
-        type: File,
+        type: Buffer,
+        required: true 
     }
 });
 
