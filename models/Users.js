@@ -18,7 +18,7 @@ const UsersSchema = new Schema({
     dob: {
         type: String,
     },
-    avataar: {
+    avatar: {
         type: String,
     },
     address: {

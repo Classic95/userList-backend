@@ -8,14 +8,19 @@ const login = async (req, res) => {
     let userModel = await Users.findOne({
       email, password
     });
-    console.log('userModel', userModel)
-    
-    if (userModel) {
-      const token = await utility.generateToken({ email, password })
-      return res.status(status.SUCCESS).send(utility.successRes('Success', { token: token }));
-    }
-    console.log('userModel', userModel)
 
+    if (!userModel) {
+      return res.status(status.ERROR).send(utility.errorRes('Login Failed'))
+    }
+
+    const token = await utility.generateToken({ ...userModel })
+
+    let update = await Users.updateOne({
+      token, password
+    }, {userId: userModel.userId});
+    if (update) {
+      return res.status(status.SUCCESS).send(utility.successRes('Success', { user: userModel, token: token }));
+    }
     return res.status(status.ERROR).send(utility.errorRes('Login Failed'))
   } catch (error) {
     console.log('error', error)
