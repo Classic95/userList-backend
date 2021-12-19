@@ -8,17 +8,20 @@ const verifyToken = (req, res, next) => {
   return new Promise((response, reject) => {
     if (authHeader !== undefined) {
       const userToken = authHeader.split(' ')[1]
+      // console.log('userToken---', userToken, typeof userToken, userToken != 'undefined')
 
-      jwt.verify(userToken, utility.KEY, async (err, user) => {
-        if (err || !user) {
-          reject(res.status(status.UNAUTHORIZED).send(utility.errorRes('Session expired')))
+      if (userToken !== 'undefined') {
+        const user = jwt.verify(userToken, utility.KEY)
+        // console.log('user---', user)
+        if (!user) {
+          return response(res.status(status.UNAUTHORIZED).send(utility.errorRes('Session expired')))
         }
-
-        response(next())
-      })
+        response(next());
+      }
+      // return response(res.status(status.UNAUTHORIZED).send(utility.errorRes('Session expired')))
     } else {
       console.log('jwt failed')
-      reject(res.status(status.UNAUTHORIZED).send(utility.errorRes('Unauthorized Request')))
+      return response(res.status(status.UNAUTHORIZED).send(utility.errorRes('Unauthorized Request')))
     }
   })
 }
